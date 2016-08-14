@@ -1,0 +1,556 @@
+/*
+Fonts:
+  Open Sans Light: 300
+  Open Sans (Regular): 400
+  Open Sans Semibold: 600
+  Open Sans Bold: 700
+
+Colors:
+  #3A3D40; = Darkest Grey
+  #333333; = Darker Grey
+  #666666; = Lighter Grey
+  #DDDDDD; = Grey
+  #F5F6F8; = Lightest Grey
+  #43b1e3; = Primary color used in icons and images
+  #f8a91c; = orange used in "Try It Now" button"
+
+*/
+
+/* Resets, page defaults, etc. */
+body,
+h1,
+h2,
+p,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  box-sizing: border-box; /*Includes padding but not margins, works better when combined with flexbox*/
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px; /*16px = 1em if unnested. Sets default text size / default of most browsers*/
+  line-height: 1;
+  font-weight: 400;
+  color: #666666;
+  }
+  
+*, *:before, *:after {
+  box-sizing: inherit; /*Applies it to nested elements as well*/
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+}
+a:link,
+a:visited {
+  color: #43b1e3;
+}
+
+
+/* Font and text settings */
+h1 {
+  margin-bottom: 1.875rem;
+  font-size: 1.875rem;
+  font-weight: 300;
+  line-height: .75; /*Removes spacing above and below the text*/
+  color: #333333;
+}
+
+h2 {
+  margin-bottom: .5rem; 
+  font-size: 1em;
+  font-weight: 700;
+  line-height: .875;
+  color: #333333;
+}
+
+p {
+  font-size: 1.125em;
+  line-height: 1.667;
+}
+
+.nav-main {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.triptych-item p {
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+footer {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: .125rem;
+}
+
+/* Arranged by DOM order (mostly) */
+header {
+  margin-bottom: 3.75rem;
+  line-height: 1.875rem; /* For vertical alignment */
+  background: #F5F6F8;
+}
+
+.navbar-main {
+  max-width: 60rem; /*960px*/
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 1.875rem;
+  padding-right: .625rem; 
+  padding-bottom: 1.875rem;
+  padding-left: .625rem;
+
+  display: flex;
+      /* display: -webkit-box; Causes a bug in the newest version of Chrome */
+      display: -ms-flexbox;
+  flex-flow: row nowrap;
+      -ms-flex-flow: row nowrap;
+  flex: 1 0 auto;
+      -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+}
+
+.logo img {
+  width: 200px;
+  height: 1.875rem;
+  vertical-align: bottom;
+}
+
+.logo a:hover,
+.logo a:focus {
+  background: inherit;
+}
+.logo a:active {
+  background: inherit;
+}
+
+.nav-main {
+  margin-right: 3.75rem;
+  margin-left: 3.75rem;
+  list-style: none;
+  text-align: center;
+
+  display: flex;
+      /* display: -webkit-box; Causes a bug in the newest version of Chrome */
+      display: -ms-flexbox;
+  flex-flow: row nowrap;
+      -ms-flex-flow: row nowrap;
+  justify-content: space-between;  
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+  flex: 1 0 auto;
+      -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+}
+
+.nav-main a {
+  padding: .5rem;
+  color: #666666;
+}
+.nav-main a:hover,
+.nav-main a:focus {
+  background: #666666;
+  color: #F5F6F8;
+}
+.nav-main a:active {
+  background: #666666;
+  color: #F5F6F8;
+}
+
+.btn {
+  max-height: 1.875rem;
+  margin-top: -3px;
+  margin-right: -3.75rem;
+}
+
+/* "Try It Now" button */
+#btn-try {
+  width: 7.5rem; /*120px*/
+  height: 2.25rem; /*36px */
+  line-height: .75rem;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  border-radius: .25rem;
+  outline: 0;
+  font-size: .875rem;
+  font-weight: 400;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  cursor: pointer;
+  background: #f8a91c; 
+  color: white;
+}
+#btn-try:after {
+  margin-top: -120%;
+  margin-left: -20px !important; /*I try to avoid !important when possible,
+                                  but this is just too much fun to pass up*/
+  padding-top: 300%;
+  padding-left: 350%;
+  display: block;
+  position: absolute;
+  opacity: 0;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  content: "";
+  background: #D8D8D8;
+}
+#btn-try:active:after {
+  margin: 0;
+  padding: 0;
+  opacity: 1;
+  -webkit-transition: 0s;
+  transition: 0s;
+}
+#btn-try span {
+  display: inline-block;
+  position: relative;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+  cursor: pointer;
+}
+#btn-try span:after {
+  top: 0;
+  position: absolute;
+  right: -.62rem; /*10px*/
+  opacity: 0;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+  content: '»';
+}
+#btn-try:hover span {
+  padding-right: .875rem;
+}
+#btn-try:hover span:after {
+  right: 0;
+  opacity: 1;
+}
+
+.main {
+  max-width: 60rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: .625rem;
+  padding-left: .625rem;
+}
+
+.feature-container {
+  margin-left: auto;
+  margin-right: auto;
+
+  display: flex;
+      display: -ms-flexbox;
+  flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+  flex: 1 0 auto;    
+      -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;    
+}
+
+.feature  {
+  padding-right: 3.75em;
+  
+  order: 1;
+      -ms-flex-order: 1;
+      -webkit-box-ordinal-group: 2;
+  flex: 2;
+      -webkit-box-flex: 2;
+      -ms-flex: 2;
+}
+
+.feature-img {
+  margin-bottom: 1.875rem;
+  text-align: center;
+  
+  order: 2;
+      -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+  flex: 1;
+      -webkit-box-flex: 1;
+      -ms-flex: 1;
+}
+
+.feature-img img {
+  width: 256px;
+  height: 256px;
+}
+
+.feature ul {
+  margin-top: 1.875rem;
+  list-style-type: none;
+}
+
+/*Allows the bullet to be justified with the li content */
+.feature li {
+  margin-bottom: 1.5rem;
+  font-size: 1em;
+}
+.feature li:last-child {
+  margin-bottom: 0;
+}
+.feature li:before  {
+  content: "•";
+}
+.feature li span {
+  margin-left: 1rem;
+  position: relative;
+}
+
+.triptych {
+  margin-top: 1.875rem;
+  
+  display: flex;
+      display: -ms-flexbox;
+  flex-flow: row nowrap;
+      -ms-flex-flow: row nowrap;  
+  justify-content: space-between;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+  order: 3;       
+      -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+  flex: 1 100%;        
+      -webkit-box-flex: 1;
+      -ms-flex: 1 100%;  
+}
+
+.triptych-item {
+  flex: 1 0;
+      -webkit-box-flex: 1;
+      -ms-flex: 1 0;
+}
+.triptych-item:nth-child(2) {
+  padding-left: 1.875rem;
+  padding-right: 1.875rem;
+} 
+
+.triptych img {
+  margin-bottom: 1.875rem;
+  width: 3.75rem;
+  height: 3.75rem;
+}
+
+.icon-checkmark li {
+  list-style-type: none;
+}
+.icon-checkmark li:before  {
+  content: url("../../assets/images/checkmark.svg");
+}
+
+hr {
+  margin: 3.5rem -.625rem 3.5rem -.625rem;
+  border-bottom: 0;
+  border-color: #D8D8D8;
+}
+
+footer {
+  margin-top: 3.75rem;
+  background: #3A3D40;
+  min-height: 10rem;
+}
+
+.navbar-footer {
+  max-width: 864px;
+  margin-left: auto;
+  margin-right: auto;  
+  padding-top: 3.75rem; 
+  padding-bottom: 3.75rem; 
+  
+  display: flex;
+      display: -ms-flexbox; 
+  flex-flow: row nowrap;
+      -ms-flex-flow: row nowrap;
+  justify-content: space-between;   
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;  
+}
+
+.nav-footer { 
+  line-height: 2.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  list-style: none;
+  text-align: center;
+  color: #DDDDDD;
+  
+  display: flex;
+      display: -ms-flexbox;
+  flex-flow: row nowrap;
+      -ms-flex-flow: row nowrap;
+  justify-content: space-between;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify; 
+  flex: 1 0 auto;
+      -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+}
+
+.nav-footer li {
+  flex: 1 auto;
+      -webkit-box-flex: 1;
+      -ms-flex: 1 auto;
+}
+
+.nav-footer a {
+  padding: .5rem;
+  color: #DDDDDD;
+}
+.nav-footer a:hover,
+.nav-footer a:focus {
+  background: #F5F6F8;
+  color: #3A3D40;
+}
+.nav-footer a:active { /*Kept separated for future use*/
+  background: #F5F6F8;
+  color: #3A3D40;
+}
+
+.social-links a {
+  padding: 0;
+}
+
+.social-links img {
+  margin-top: -6px;
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+.social-links a:hover,
+.social-links a:focus {
+  background: inherit;
+}
+.social-links a:active {
+  background: inherit;
+}
+
+.hide {
+  display: none;
+}
+
+
+@media (max-width: 1080px) {
+  .btn { 
+    display: none;
+  }
+}
+
+
+@media (max-width: 700px) {
+  /*header*/
+  .navbar-main {
+    padding-top: 2.8125rem;
+    
+    flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+  }
+  
+  .logo  {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.875rem;
+    line-height: 2.8125rem;
+  }
+
+  .logo img {
+    width: 300px;
+    height: 45px;
+  }
+  
+  .nav-main {
+    margin-right: 2.5rem;
+    margin-left: 2.5rem;
+  }  
+
+  /*body*/
+  .main {
+    max-width: 38.75rem;
+  }
+  
+  .feature  {
+    text-align: center;
+    padding-right: 0;
+    
+    order: 2;        
+        -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+    flex: 1 auto;
+        -webkit-box-flex: 1;
+        -ms-flex: 1 auto;        
+  }
+  
+  .feature-img  {
+    margin-bottom: 3.75rem;
+    
+    order: 1;
+        -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;  
+  }
+  
+  .feature-img img {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .triptych {
+    text-align: center;
+    
+    flex-flow: column wrap;
+        -ms-flex-flow: column wrap;
+  }
+  
+  .triptych-item {
+    margin-bottom: 1.875rem;
+    text-align: left;   
+    
+    flex: 1 0 auto;
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 auto;
+  }
+  
+  .triptych-item:nth-child(2) {
+    padding-left: 0;
+    padding-right: 0;
+  } 
+  
+  .triptych-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .triptych img {
+    float: left;
+    margin-right: 1.875rem;
+  }
+
+  /*footer*/
+  .nav-footer {
+    margin-right: auto;
+    margin-left: auto;
+    line-height: 1.5rem;
+    
+    flex-flow: column nowrap;
+        -ms-flex-flow: column nowrap;
+  }
+  
+  .nav-footer li {
+    padding-bottom: 1.875rem;
+  }
+  .nav-footer li:last-child {
+    padding-bottom: 0;
+  }
+  .social-links span {
+    display: block;
+  }
+
+  .social-links img {
+    margin-top: 12px;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+  }
+}
